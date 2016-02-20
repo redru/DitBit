@@ -1,0 +1,12 @@
+TIPS:
+- Il file 'proxy.bowerrc' va rinominato in '.bowerrc' se si vuole usare. All'interno si può configurare il proxy per
+bower, se necessario.
+
+- Per installare le dipendenze, eseguire 'npm install' nella root del progetto e poi 'bower install'. Se bower non è
+installato si può installare con 'npm install -g bower'.
+
+- Se si vogliono installare nuove dipendenze, conviene eseguire il comando, ad esempio 'npm install --save <package>' in
+maniera da installare le dipendenze e aggiungerle al file 'package.json'. La stessa cosa si può fare con bower.
+
+- A livello di Version Control, ignorare le directory '.idea/*' (da verificare), 'node_modules/*', 'bower_components/*'
+e il file 'DitBit.iws'

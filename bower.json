@@ -1,0 +1,26 @@
+{
+  "name": "ditbit",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Luca Zenobi",
+    "Vito Leonetti"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.0",
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6"
+  }
+}

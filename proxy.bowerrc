@@ -1,0 +1,4 @@
+{
+  "proxy": "http://proxy.local",
+  "https-proxy": "https://proxy.local"
+}
