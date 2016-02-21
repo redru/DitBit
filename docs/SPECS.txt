@@ -1,0 +1,10 @@
+1) BASE DATI
+
+MOVIMENTI (da definire nome, TRANSACTIONS?)
+    |_ _ID
+    |_ USER
+    |_ CODE
+    |_ DESCRIPTION
+    |_ VALUE
+    |_ VALUE_DATE
+    |_ DATE
