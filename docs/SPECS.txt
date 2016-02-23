@@ -1,10 +1,24 @@
 1) BASE DATI
 
-MOVIMENTI (da definire nome, TRANSACTIONS?)
+TRANSACTIONS (da definire nome, TRANSACTIONS? --> vl: OK)
     |_ _ID
     |_ USER
-    |_ CODE
+    |_ CODE         --> vl: tipo di CODE_OPERATIONS ?
     |_ DESCRIPTION
     |_ VALUE
     |_ VALUE_DATE
     |_ DATE
+    |_ CODE_BANK
+    |_ TYPE_PAYMENT (tipologia di pagamento Es. carta di credito, carta di debito, bonifico, assegno, ecc.) --> vl: lo inseriamo ?
+
+CODE_OPERATIONS (elenco codici delle operazioni. Es. Bolletta gas, Bolletta energia, Bonifico a debito, Bonifico a credito, ecc.)
+    |_ _ID
+    |_ CODE
+    |_ DESCRIPTION
+
+BANKS (elenco delle banche)
+    |_ _ID
+    |_ CODE
+    |_ NAME
+
+

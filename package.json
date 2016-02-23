@@ -1,5 +1,14 @@
 {
   "name": "ditbit",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "description": "app to manage money",
+  "contributors": [
+    { "name" : "Luca Z."},
+    { "name" : "Vito L.", "email": "veleonetti@gmail.com"}
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redru/DitBit.git"
+  }
 }
