@@ -4,11 +4,19 @@
   "private": true,
   "description": "app to manage money",
   "contributors": [
-    { "name" : "Luca Z."},
-    { "name" : "Vito L.", "email": "veleonetti@gmail.com"}
+    {
+      "name": "Luca Z."
+    },
+    {
+      "name": "Vito L.",
+      "email": "veleonetti@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/redru/DitBit.git"
+  },
+  "dependencies": {
+    "mongoose": "^4.3.7"
   }
 }
