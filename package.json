@@ -5,7 +5,8 @@
   "description": "app to manage money",
   "contributors": [
     {
-      "name": "Luca Z."
+      "name": "Luca Z.",
+      "email": "luzenobi@gmail.com"
     },
     {
       "name": "Vito L.",
@@ -17,6 +18,8 @@
     "url": "https://github.com/redru/DitBit.git"
   },
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
     "mongoose": "^4.3.7"
   }
 }
