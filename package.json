@@ -4,11 +4,21 @@
   "private": true,
   "description": "app to manage money",
   "contributors": [
-    { "name" : "Luca Z."},
-    { "name" : "Vito L.", "email": "veleonetti@gmail.com"}
+    {
+      "name": "Luca Z.",
+      "email": "luzenobi@gmail.com"
+    },
+    {
+      "name": "Vito L.",
+      "email": "veleonetti@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/redru/DitBit.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
   }
 }
