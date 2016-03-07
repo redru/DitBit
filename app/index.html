@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link rel="import" href="/bower_components/app-router/app-router.html">
+
     <title>DitBit</title>
+
+    <script>
+        $(document).ready(function() {
+            // document.querySelector('app-router').go('/');
+        });
+    </script>
 </head>
 <body>
+    <div>
+        Application up.
+    </div>
+
+    <div>
+        <!-- Hashchange -->
+        <a href="#/home">Home Hash</a>
+    </div>
+
+    <div>
+        <app-router mode="auto|hash">
+            <!-- Home page matching -->
+            <app-route path="/home" import="/ditbit/views/home-page.html"></app-route>
+
+            <!-- matches using a wildcard
+            <app-route path="/customer/*" import="/pages/customer-page.html"></app-route> -->
+
+            <!-- matches using a path variable
+            <app-route path="/order/:id" import="/pages/order-page.html"></app-route> -->
+
+            <!-- matches a pattern like '/word/number'
+            <app-route path="/^\/\w+\/\d+$/i" regex import="/pages/regex-page.html"></app-route> -->
+
+            <!-- Default matching -->
+            <app-route path="*" redirect="/home"></app-route>
+        </app-router>
+    </div>
 
 </body>
+
 </html>

@@ -21,6 +21,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#1.2.0",
     "jquery": "^2.2.0",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.2.0",
+    "app-router": "^2.6.1"
   }
 }
