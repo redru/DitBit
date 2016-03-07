@@ -1,35 +1,35 @@
-var Bank = require('./.').Bank;
+var BankDao = require('./../mapper/dao/bankDao').BankDao;
 
 BankService = function() {
 };
 
 BankService.save = function (objData, callbackFunction){
     var objResponse = {};
-    this.findByCode(objData.code, function(err, objectResponse) {
+
+    BankDao.findByCode(objData.code, function(err, objectResponse) {
         if (err){
-            console.log("FindByCode err! --> " + err);
+            console.log("BankService - FindByCode err! --> " + err);
             callbackFunction(err, objectResponse);
         }
         else{
-            if (objectResponse.result && objectResponse.result.code){
+            var results = objectResponse.result;
+            if (results && results.length > 0){
                 objResponse.esito = 'KO';
                 objResponse.info = "Code bank exist!!!";
+                callbackFunction(err, objResponse);
             }
             else{
-                var newBank = new Bank;
-                newBank.name = objData.name;
-                newBank.code = objData.code;
-                newBank.save(function (err, newBank) {
+                BankDao.save(objData, function (err, newObj) {
                     if (err){
-                        console.log("Save error! --> " + err);
+                        console.log("BankService - Save error! --> " + err);
                         objResponse.esito = 'KO';
                         objResponse.error = err;
                         callbackFunction(err, objResponse);
                     }
                     else{
-                        console.log("Save correct! --> " + newBank.code + " - " + newBank.name + " - " + + newBank._id);
+                        console.log("BankService - Save correct! --> " + newObj.code + " - " + newObj.name + " - " + + newObj._id);
                         objResponse.esito = 'OK';
-                        objResponse.info = newBank;
+                        objResponse.info = newObj;
                         callbackFunction(null, objResponse);
                     }
                 });
@@ -38,39 +38,58 @@ BankService.save = function (objData, callbackFunction){
     })
 };
 
-BankService.findByCode = function (codeValue, callbackFunction){
+BankService.update = function (objData, callbackFunction){
     var objResponse = {};
-    Bank.find({code: codeValue}, function (err, banksFound) {
+    BankDao.findByCode(objData.code, function(err, objectResponse) {
         if (err){
-            console.log("Find err! --> " + err);
+            console.log("BankService - FindByCode err! --> " + err);
+            callbackFunction(err, objectResponse);
+        }
+        else{
+            var results = objectResponse.result;
+            if (results && results.length == 0){
+                objResponse.esito = 'KO';
+                objResponse.info = "Code bank not exist!!!";
+                callbackFunction(err, objResponse);
+            }
+            else{
+                //var bankFinded = results[0];
+
+                BankDao.update(objData, function (err, updBank) {
+                    if (err){
+                        console.log("BankService - Update error! --> " + err);
+                        objResponse.esito = 'KO';
+                        objResponse.error = err;
+                        callbackFunction(err, objResponse);
+                    }
+                    else{
+                        console.log("BankService - Update correct! --> Number of item updated " + updBank.info.nModified + " - esito " + updBank.info.ok);
+                        objResponse.esito = 'OK';
+                        objResponse.info = updBank;
+                        callbackFunction(null, objResponse);
+                    }
+                });
+            }
+        }
+    })
+};
+
+BankService.delete = function (objData, callbackFunction){
+    var objResponse = {};
+    BankDao.delete(objData, function (err, delBank) {
+        if (err){
+            console.log("BankService - Delete error! --> " + err);
             objResponse.esito = 'KO';
             objResponse.error = err;
             callbackFunction(err, objResponse);
         }
         else{
-            console.log("Find correct! --> " + banksFound);
+            console.log("BankService - Delete correct! --> Number of item removed " + delBank.info.result.ok);
             objResponse.esito = 'OK';
-            objResponse.result = banksFound;
-            objResponse.error = null;
+            objResponse.info = delBank;
             callbackFunction(null, objResponse);
         }
     });
 };
 
-BankService.find = function (objData, callbackFunction){
-    var objResponse = {};
-    Bank.find(objData, function (err, banks) {
-        if (err){
-            console.log("Find Bank err! --> " + err);
-            objResponse.esito = 'KO';
-            objResponse.error = err;
-            callbackFunction(err, objResponse);
-        }
-        else{
-            console.log("Find Bank correct! --> " + banks);
-            objResponse.esito = 'OK';
-            objResponse.result = banks;
-            callbackFunction(null, objResponse);
-        }
-    });
-};
+exports.BankService = BankService;

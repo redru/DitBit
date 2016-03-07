@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 var bankSchema = new Schema({
     code: { type : String, required : true},
     name: { type : String, required : true},
-    dateInsert: { type: Date, default: Date.now }
+    dateInsert: { type: Date, default: Date.now },
+    colorLabel: { type : String, required : true, default: '#CCCCCC'},
+    dateUpdate: {type: Date}
 });
 
 var Bank = mongoose.model('Bank', bankSchema);
