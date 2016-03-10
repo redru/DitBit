@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     bankService.save(req.body, function(err, objResponse) {
-        err ? res.status(500).send('{ "error":"' + objResponse.info + '" }') : res.sendStatus(200);
+        objResponse.esito == 'KO' ? res.status(500).send('{ "error":"' + objResponse.info + '" }') : res.sendStatus(200);
     });
 });
 

@@ -11,7 +11,7 @@
 
         <iron-ajax
                 id="bankService"
-                url="http://localhost:3000/ditbit/bank"
+                url="/ditbit/bank"
                 content-type="application/json"
                 handle-as="json"
                 on-response="handleResponse"
@@ -43,6 +43,7 @@
                 var bodyObj = {};
                 bodyObj.code = this.$.cdBnk.value;
                 bodyObj.name = this.$.nameBnk.value;
+                bodyObj.colorLabel = '#AAAAAA';
                 this.$.bankService.body = bodyObj;
                 this.$.bankService.generateRequest();
             },

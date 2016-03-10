@@ -24,7 +24,7 @@ app.listen(3000, function () {
     console.log('DitBit listening at port 3000');
 
     //open connection
-    mongoose.connect('mongodb://127.0.0.1/bank'); //port 27017
+    mongoose.connect('mongodb://AM-VELEONETTI/bank'); //port 27017
     var db = mongoose.connection;
     db.on('error', function() {
         console.log("Error! Exiting... Must start MongoDB first");

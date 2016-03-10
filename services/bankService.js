@@ -92,4 +92,4 @@ BankService.delete = function (objData, callbackFunction){
     });
 };
 
-exports.BankService = BankService;
+module.exports = BankService;
