@@ -1,5 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose');
 
 var app = express();
 app.use(bodyParser.json());
@@ -21,4 +22,16 @@ app.use('/ditbit', require('./routes/ditbit'));
 /* Application startup */
 app.listen(3000, function () {
     console.log('DitBit listening at port 3000');
+
+    //open connection
+    mongoose.connect('mongodb://127.0.0.1/bank'); //port 27017
+    var db = mongoose.connection;
+    db.on('error', function() {
+        console.log("Error! Exiting... Must start MongoDB first");
+        process.exit(1);
+    });
+    db.once('open', function() {
+        // we're connected!
+        console.log('Connection mongodb success');
+    });
 });

@@ -1,18 +1,64 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="test-component">
 
     <template>
         <p>Test component, Polymer example.</p>
+        <label>Codice Banca</label><input id="cdBnk" type="text" required/>
+        <label>Descrizione Banca</label><input id="nameBnk" type="text" required/>
+        <button id="btnSave">SALVA</button>
+
+        <iron-ajax
+                id="bankService"
+                url="http://localhost:3000/ditbit/bank"
+                content-type="application/json"
+                handle-as="json"
+                on-response="handleResponse"
+                on-error="handleError"
+                on-request="handleRequest"
+                method="POST"
+                debounce-duration="300"></iron-ajax>
     </template>
 
     <script>
         Polymer({
             is: "test-component",
 
+            listeners : {
+                'btnSave.tap' : 'saveClick'
+            },
+
             created: function() {
-                this.style.border = '1px solid red';
-            }
+                console.log("test-component - created");
+                //this.style.border = '1px solid red';
+            },
+
+            ready : function(){
+                console.log("test-component - ready");
+            },
+
+            saveClick : function(e) {
+                console.log('test-component - saveClick - codice banca: ' + this.$.cdBnk.value + ' - descrizione: ' + this.$.nameBnk.value);
+                var bodyObj = {};
+                bodyObj.code = this.$.cdBnk.value;
+                bodyObj.name = this.$.nameBnk.value;
+                this.$.bankService.body = bodyObj;
+                this.$.bankService.generateRequest();
+            },
+
+            handleRequest : function(e){
+                console.log('test-component - handleRequest');
+            },
+
+            handleResponse : function(e){
+                console.log('test-component - handleResponse');
+            },
+
+            handleError : function(e){
+                console.log('test-component - handleError ' + e);
+            },
+
         });
     </script>
 
