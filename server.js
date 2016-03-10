@@ -9,11 +9,14 @@ app.get('/bower_components/*', function(req, res) {
     res.sendFile(__dirname + req.url);
 });
 
-/* Application routing */
-app.use('/ditbit', require('./routes/ditbit'));
-
 /* Application REST routing */
 app.use('/ditbit/transaction', require('./routes/transaction'));
+
+/* Application REST routing */
+app.use('/ditbit/bank', require('./routes/bank'));
+
+/* Application routing */
+app.use('/ditbit', require('./routes/ditbit'));
 
 /* Application startup */
 app.listen(3000, function () {
